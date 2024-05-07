@@ -256,21 +256,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-06
+                    2024-05-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    793
+                    801
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -280,6 +280,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -287,14 +290,38 @@
             <div id="articleContent">
                 <p>润物无声：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑<br>效率至上：只需简单配置，即可见到那快速进行单表CRUD操作，从而节省大量时间<br>[TOC]</p>
 <h3 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h3><h4 id="1-引入MybatisPlus的起步依赖"><a href="#1-引入MybatisPlus的起步依赖" class="headerlink" title="1.引入MybatisPlus的起步依赖"></a>1.引入MybatisPlus的起步依赖</h4><p>MyBatisPlus官方提供了starter，其中集成了Mybatis和MybatisPlus的所有功能，并且实现了自动装配效果。<br>因此我们可以用MybatisPlus的starter代替Mybatis的starter：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--MybatisPlus--&gt;</span><br><span class="line">&lt;dependency&gt;   </span><br><span class="line">    &lt;groupId&gt;com.baomidou&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.5.3.1&lt;/version&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="2-定义Mapper"><a href="#2-定义Mapper" class="headerlink" title="2.定义Mapper"></a>2.定义Mapper</h4><p>自定义Mapper继承MybatisPlus提供的BaseMapper接口<br><img src="/D:/blog/source/_posts/images/111.jpg" alt="title"></p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!--MybatisPlus--&gt;
+&lt;dependency&gt;   
+    &lt;groupId&gt;com.baomidou&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;3.5.3.1&lt;&#x2F;version&gt;
+ &lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-定义Mapper"><a href="#2-定义Mapper" class="headerlink" title="2.定义Mapper"></a>2.定义Mapper</h4><p>自定义Mapper继承MybatisPlus提供的BaseMapper接口</p>
+<p><img src="/./images/1.jpg" alt="title"></p>
 <h4 id="3-常见注解"><a href="#3-常见注解" class="headerlink" title="3.常见注解"></a>3.常见注解</h4><p><strong>1.TableName</strong></p>
 <table><tr><td bgcolor="#F5F5DC">MyBatis-Plus在确定操作的表时，由BaseMapper的泛型决定，即实体类型决定，且默认操作的表名和实体类型的类名一致</td></tr></table>
 如果表名和我们的实体类的名称不一致的话，在执行相关操作的时候会抛出对应的异常
 这时可以通过@TableName来解决这个问题。
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @TableName 标识实体类对应的表名</span><br><span class="line"> */</span><br><span class="line">@TableName(value =&quot;tb_user&quot;)</span><br><span class="line">@Data//自动生成set和get方法</span><br><span class="line">public class User  &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private Long id;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    private Integer age;</span><br><span class="line"></span><br><span class="line">    private String phone;</span><br><span class="line"></span><br><span class="line">    private String isDeleted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;**
+ * @TableName 标识实体类对应的表名
+ *&#x2F;
+@TableName(value &#x3D;&quot;tb_user&quot;)
+@Data&#x2F;&#x2F;自动生成set和get方法
+public class User  &#123;
+
+
+    private Long id;
+
+    private String name;
+
+    private Integer age;
+
+    private String phone;
+
+    private String isDeleted;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>2.@TableId</strong></p>
 <ul>
 <li>通过@TableId注解来指定哪个属性为主键对应的属性，默认id就是，如果主键字段不是id，比如uid的话，可以在TUser实体的uid属性上添加@TableId即可。</li>
@@ -303,7 +330,7 @@
 </ul>
 <p><strong>3.@TableField</strong></p>
 <p>@TableField注解的作用是当实体类中的属性和表结构中的字段名称不一致的情况下来设置对应关系的。<br>不过，在MyBatis-Plus中针对实体中是userName而表结构中是user_name这种情况会自动完成驼峰命名法的转换。<br>ps. 项目开发中尽可能让实体属性和表结构字段保持一致~~~~（驼峰命名法转换除外）</p>
-<p><strong>配置主键自增 需要在表结构中的主键字段要设置自动增长才行</strong><br><img src="/D:/blog/source/_posts/images/2.png" alt="title"></p>
+<p><strong>配置主键自增 需要在表结构中的主键字段要设置自动增长才行</strong><br><img src="/./images/2.png" alt="title"></p>
 <p><strong>MybatisPlus是如何获取实现CRUD的数据库表信息的？</strong></p>
 <ul>
 <li>默认以类名驼峰转下划线作为表名</li>
@@ -327,8 +354,8 @@
 <li>成员变量名与数据库关键字冲突</li>
 <li>成员变量不是数据库字段</li>
 </ul>
-<p><strong>MyBatisPlus的配置项继承了MyBatis原生配置和一些自己特有的配置。例如：</strong><br><img src="/D:/blog/source/_posts/images/3.png" alt="title"></p>
-
+<p><strong>MyBatisPlus的配置项继承了MyBatis原生配置和一些自己特有的配置。例如：</strong></p>
+<img src="/./images/3.png">
                 
             </div>
             <hr/>
@@ -523,6 +550,9 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -699,7 +729,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">820</span>
+                        class="white-color">829</span>
             
             
             
