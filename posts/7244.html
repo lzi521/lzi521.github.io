@@ -256,21 +256,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-07
+                    2024-05-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    801
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -298,7 +298,7 @@
  &lt;&#x2F;dependency&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-定义Mapper"><a href="#2-定义Mapper" class="headerlink" title="2.定义Mapper"></a>2.定义Mapper</h4><p>自定义Mapper继承MybatisPlus提供的BaseMapper接口</p>
 <p><img src="/./images/1.jpg" alt="title"></p>
-<h4 id="3-常见注解"><a href="#3-常见注解" class="headerlink" title="3.常见注解"></a>3.常见注解</h4><p><strong>1.TableName</strong></p>
+<h4 id="3-常见注解"><a href="#3-常见注解" class="headerlink" title="3.常见注解"></a>3.常见注解</h4><p><strong>1.@TableName</strong></p>
 <table><tr><td bgcolor="#F5F5DC">MyBatis-Plus在确定操作的表时，由BaseMapper的泛型决定，即实体类型决定，且默认操作的表名和实体类型的类名一致</td></tr></table>
 如果表名和我们的实体类的名称不一致的话，在执行相关操作的时候会抛出对应的异常
 这时可以通过@TableName来解决这个问题。
@@ -356,6 +356,54 @@ public class User  &#123;
 </ul>
 <p><strong>MyBatisPlus的配置项继承了MyBatis原生配置和一些自己特有的配置。例如：</strong></p>
 <img src="/./images/3.png">
+
+<h3 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h3><h4 id="条件构造器"><a href="#条件构造器" class="headerlink" title="条件构造器"></a>条件构造器</h4><ul>
+<li><strong>QueryWrapper和LambdaQueryWrapper通常用来构建select、delete、update的where条件部分</strong></li>
+<li><strong>UpdateWrapper和LambdaUpdateWrapper通常只有在set语句比较特殊才使用</strong></li>
+<li><strong>尽量使用LambdaQueryWrapper和LambdaUpdateWrapper，避免硬编码</strong></li>
+</ul>
+<p>基于QueryWrapper的查询<br><img src="/./images/5.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">@Test
+    void testQueryWrapper()&#123;
+        &#x2F;&#x2F;1.构造查询条件
+        QueryWrapper&lt;User&gt; wrapper&#x3D;new QueryWrapper&lt;User&gt;()
+                .select(&quot;id&quot;,&quot;username&quot;,&quot;info&quot;,&quot;balance&quot;)
+                .like(&quot;username&quot;,&quot;o&quot;)
+                .ge(&quot;balance&quot;,1000);
+        &#x2F;&#x2F;2.查询
+        List&lt;User&gt; users&#x3D;userMapper.selectList(wrapper);
+        users.forEach(System.out::println);
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="/./images/6.png">
+
+<pre class="line-numbers language-none"><code class="language-none">@Test
+    void testUpdateQueryWrapper()&#123;
+        &#x2F;&#x2F;1.构造查询条件
+        User user&#x3D;new User();
+        user.setBalance(2000);
+        &#x2F;&#x2F;2.更新条件
+        QueryWrapper&lt;User&gt; wrapper&#x3D;new QueryWrapper&lt;User&gt;().eq(&quot;username&quot;,&quot;jack&quot;);
+        &#x2F;&#x2F;执行更新
+        userMapper.update(user,wrapper);
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>基于UpdateWrapper的更新<br><img src="/./images/7.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">@Test
+    void testUpdateWrapper()&#123;
+        List&lt;Long&gt; ids&#x3D;List.of(1L,2L,4L);
+        UpdateWrapper&lt;User&gt; wrapper&#x3D;new UpdateWrapper&lt;User&gt;()
+                .setSql(&quot;balance &#x3D; balance -200&quot;)
+                .in(&quot;id&quot;,ids);
+
+        userMapper.update(null,wrapper);
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h4 id="自定义SQL"><a href="#自定义SQL" class="headerlink" title="自定义SQL"></a>自定义SQL</h4><h4 id="Service-接口"><a href="#Service-接口" class="headerlink" title="Service 接口"></a>Service 接口</h4><p><img src="/./images/4.png" alt="title"></p>
+
                 
             </div>
             <hr/>
@@ -729,7 +777,7 @@ public class User  &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">829</span>
+                        class="white-color">1.1k</span>
             
             
             
