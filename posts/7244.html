@@ -256,21 +256,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-10
+                    2024-05-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -403,6 +403,47 @@ public class User  &#123;
 
 
 <h4 id="自定义SQL"><a href="#自定义SQL" class="headerlink" title="自定义SQL"></a>自定义SQL</h4><h4 id="Service-接口"><a href="#Service-接口" class="headerlink" title="Service 接口"></a>Service 接口</h4><p><img src="/./images/4.png" alt="title"></p>
+<h5 id="MybatisPlus的Service接口使用流程"><a href="#MybatisPlus的Service接口使用流程" class="headerlink" title="MybatisPlus的Service接口使用流程"></a>MybatisPlus的Service接口使用流程</h5><p><img src="/./images/8.png" alt="title"><br>IService<T>是一个泛型接口，在框架中提供CRUD的操作服务,即继承这个接口后咱就可以调用Mp当中的基础方法了</T></p>
+<pre class="line-numbers language-none"><code class="language-none">public interface IUserService extends IService&lt;User&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>@Service: 告诉Spring这是业务层  同样也是继承了ServiceImpl&lt;M extends BaseMapper<T>, T&gt;<br>第一个参数是Mapper层  第二个是实体类</T></p>
+<pre class="line-numbers language-none"><code class="language-none">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements IUserService <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>之后可以在controller层直接调用service层的方法<br><img src="/./images/9.png" alt="title"><br>IService的Lambda查询<br>需求：实现一个根据复杂条件查询用户的接口，查询条件如下：</p>
+<ul>
+<li>name：用户名关键字，可以为空</li>
+<li>status：用户状态，可以为空</li>
+<li>minBalance：最小余额，可以为空</li>
+<li>maxBalance：最大余额，可以为空</li>
+</ul>
+<p>如果使用常规代码<br>需要在mapper层写下如下代码</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;select id&#x3D;&quot;queryUsers&quot; resultType&#x3D;&quot;com.itheima.mp.domain.po.User&quot;&gt;
+        select *
+        from user
+        &lt;where&gt;
+            &lt;if test&#x3D;&quot;name !&#x3D; null&quot;&gt;
+                and username like concat(&#39;%&#39;,#&#123;name&#125;,&#39;%&#39;)
+            &lt;&#x2F;if&gt;
+            &lt;if test&#x3D;&quot;status !&#x3D; null&quot;&gt;
+                and &#39;status&#39; &#x3D; #&#123;status&#125;
+            &lt;&#x2F;if&gt;
+            &lt;if test&#x3D;&quot;minBalance !&#x3D;null and maxBalance !&#x3D; null&quot;&gt;
+                and balance between #&#123;minBalance&#125; and #&#123;maxBalance&#125;
+            &lt;&#x2F;if&gt;
+        &lt;&#x2F;where&gt;
+    &lt;&#x2F;select&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果使用IService的Lambdada方法</p>
+<pre class="line-numbers language-none"><code class="language-none">public List&lt;User&gt; queryUsers(String name, Integer status, Integer minBalance, Integer maxBalance) &#123;
+       List&lt;User&gt; list &#x3D; lambdaQuery()
+               .like(name !&#x3D; null, User::getUsername, name)
+               .eq(status !&#x3D; null, User::getStatus, status)
+               .ge(minBalance !&#x3D; null, User::getBalance, minBalance)&#x2F;&#x2F;&gt;&#x3D;
+               .le(maxBalance !&#x3D; null, User::getBalance, maxBalance)&#x2F;&#x2F;&lt;&#x3D;
+               .list();
+       return list;
+
+   &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 
                 
             </div>
@@ -777,7 +818,7 @@ public class User  &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.1k</span>
+                        class="white-color">1.5k</span>
             
             
             
