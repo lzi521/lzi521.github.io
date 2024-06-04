@@ -259,14 +259,14 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    228
+                    581
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -289,6 +289,11 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
 <h3 id="transition和animation的区别"><a href="#transition和animation的区别" class="headerlink" title="transition和animation的区别"></a>transition和animation的区别</h3><p>transition是一个过渡的效果，没有中间状态，需要设置触发事件（如hover等）才能执行；<br>animation是一个动画的效果，有多个中间帧，可以在任意一个中间帧设置状态，不需要设置触发事件就能执行</p>
 <h3 id="js数据类型有哪些"><a href="#js数据类型有哪些" class="headerlink" title="js数据类型有哪些"></a>js数据类型有哪些</h3><p>基本数据类型有七种，分别是：Number，String，Boolean，Undefined，Null，Symbol，BigInt<br>Symbol（独一无二的值，ES6 新增）</p>
 <h3 id="双向绑定-v-model"><a href="#双向绑定-v-model" class="headerlink" title="双向绑定 v-model"></a>双向绑定 v-model</h3><h3 id="单向绑定-v-bind"><a href="#单向绑定-v-bind" class="headerlink" title="单向绑定 v-bind"></a>单向绑定 v-bind</h3><h3 id="v-for-和v-if-的优先级"><a href="#v-for-和v-if-的优先级" class="headerlink" title="v-for 和v-if 的优先级"></a>v-for 和v-if 的优先级</h3><p>vue2中：v-for &gt; v-if<br>vue3中：v-for &lt; v-if</p>
+<h3 id="前端如何实现token的无感刷新？"><a href="#前端如何实现token的无感刷新？" class="headerlink" title="前端如何实现token的无感刷新？"></a>前端如何实现token的无感刷新？</h3><p>第一种，由后端同学来返回过期时间，前端在每次请求的时候，判断token的过期时间，如果快到过期时间，就去调用刷新token接口。不过，这种方案不仅需要后端额外提供一个token过期时间，而且当前端用本地时间判断，本地时间又被修改的情况下，就会造成判断不准确，所以不推荐。</p>
+<p>第二种，前端写个setInterval定时器，定时去检查距离用户登录时间是否超过某个时间段，然后去刷新token接口，这种方案比较浪费资源，所以不建议使用。</p>
+<p>第三种，可以在axios请求响应拦截器中拦截，当判断token过期后，调用刷新token的接口，这种方案不需要后端额外返回字段，也不会浪费资源，是比较推荐的，不过，这种方案实现的时候，需要注意几点，</p>
+<p>第一点就是需要防止多次刷新token。</p>
+<h3 id="HTTP-和-WebSocket-的区别，协议有差别吗"><a href="#HTTP-和-WebSocket-的区别，协议有差别吗" class="headerlink" title="HTTP 和 WebSocket 的区别，协议有差别吗"></a>HTTP 和 WebSocket 的区别，协议有差别吗</h3><p>因此，虽然HTTP和WebSocket都是用于网络通信的协议，但它们的设计目的和工作方式不同,单向<br>WebSocket更适合需要实时双向通信的应用场景，而HTTP则更适用于传统的请求-响应模型。双向</p>
 
                 
             </div>
@@ -657,7 +662,7 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.7k</span>
+                        class="white-color">2k</span>
             
             
             
