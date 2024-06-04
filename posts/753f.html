@@ -252,21 +252,21 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-06-04
+                    2024-06-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    581
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    12 分
                 </div>
                 
 
@@ -287,13 +287,69 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
                 <h3 id="css两种盒子模型"><a href="#css两种盒子模型" class="headerlink" title="css两种盒子模型"></a>css两种盒子模型</h3><p>CSS 中有两种盒模型：标准盒模型（content-box）和IE 盒模型（border-box）</p>
 <h3 id="rem和em的区别你知道么？"><a href="#rem和em的区别你知道么？" class="headerlink" title="rem和em的区别你知道么？"></a>rem和em的区别你知道么？</h3><p>rem：rem是相对于根元素（即html元素）的字体大小进行计算的单位<br>em：em是相对于父元素的字体大小进行计算的单位</p>
 <h3 id="transition和animation的区别"><a href="#transition和animation的区别" class="headerlink" title="transition和animation的区别"></a>transition和animation的区别</h3><p>transition是一个过渡的效果，没有中间状态，需要设置触发事件（如hover等）才能执行；<br>animation是一个动画的效果，有多个中间帧，可以在任意一个中间帧设置状态，不需要设置触发事件就能执行</p>
-<h3 id="js数据类型有哪些"><a href="#js数据类型有哪些" class="headerlink" title="js数据类型有哪些"></a>js数据类型有哪些</h3><p>基本数据类型有七种，分别是：Number，String，Boolean，Undefined，Null，Symbol，BigInt<br>Symbol（独一无二的值，ES6 新增）</p>
+<h3 id="js数据类型有哪些"><a href="#js数据类型有哪些" class="headerlink" title="js数据类型有哪些"></a>js数据类型有哪些</h3><p>基本数据类型有七种，分别是：Number，String，Boolean，Undefined，Null，Symbol，BigInt<br>引用类型：object<br>Symbol（独一无二的值，ES6 新增）<br>NAN是一个数值类型</p>
 <h3 id="双向绑定-v-model"><a href="#双向绑定-v-model" class="headerlink" title="双向绑定 v-model"></a>双向绑定 v-model</h3><h3 id="单向绑定-v-bind"><a href="#单向绑定-v-bind" class="headerlink" title="单向绑定 v-bind"></a>单向绑定 v-bind</h3><h3 id="v-for-和v-if-的优先级"><a href="#v-for-和v-if-的优先级" class="headerlink" title="v-for 和v-if 的优先级"></a>v-for 和v-if 的优先级</h3><p>vue2中：v-for &gt; v-if<br>vue3中：v-for &lt; v-if</p>
 <h3 id="前端如何实现token的无感刷新？"><a href="#前端如何实现token的无感刷新？" class="headerlink" title="前端如何实现token的无感刷新？"></a>前端如何实现token的无感刷新？</h3><p>第一种，由后端同学来返回过期时间，前端在每次请求的时候，判断token的过期时间，如果快到过期时间，就去调用刷新token接口。不过，这种方案不仅需要后端额外提供一个token过期时间，而且当前端用本地时间判断，本地时间又被修改的情况下，就会造成判断不准确，所以不推荐。</p>
 <p>第二种，前端写个setInterval定时器，定时去检查距离用户登录时间是否超过某个时间段，然后去刷新token接口，这种方案比较浪费资源，所以不建议使用。</p>
 <p>第三种，可以在axios请求响应拦截器中拦截，当判断token过期后，调用刷新token的接口，这种方案不需要后端额外返回字段，也不会浪费资源，是比较推荐的，不过，这种方案实现的时候，需要注意几点，</p>
 <p>第一点就是需要防止多次刷新token。</p>
 <h3 id="HTTP-和-WebSocket-的区别，协议有差别吗"><a href="#HTTP-和-WebSocket-的区别，协议有差别吗" class="headerlink" title="HTTP 和 WebSocket 的区别，协议有差别吗"></a>HTTP 和 WebSocket 的区别，协议有差别吗</h3><p>因此，虽然HTTP和WebSocket都是用于网络通信的协议，但它们的设计目的和工作方式不同,单向<br>WebSocket更适合需要实时双向通信的应用场景，而HTTP则更适用于传统的请求-响应模型。双向</p>
+<h3 id="浏览器缓存，强缓存和协商缓存的优先级，强缓存的状态码"><a href="#浏览器缓存，强缓存和协商缓存的优先级，强缓存的状态码" class="headerlink" title="浏览器缓存，强缓存和协商缓存的优先级，强缓存的状态码"></a>浏览器缓存，强缓存和协商缓存的优先级，强缓存的状态码</h3><p>缓存优先级的顺序为强缓存的优先级高于协商缓存，支持强缓存的状态码主要有200 OK和304 Not Modified。<br>浏览器缓存优先级：<br>强缓存和协商缓存同时存在的情况：如果强缓存仍在有效期内，则强缓存覆盖协商缓存，即优先使用本地缓存资源；若强缓存过期，则协商缓存生效。<br>强缓存字段expires和cache-control同时存在的情况：cache-control会覆盖expires，无论expires指示的资源是否过期，都以cache-control为准。<br>协商缓存字段Etag和Last-Modified同时存在的情况：Etag会覆盖Last-Modified，即优先根据Etag判断资源是否更新。</p>
+<h3 id="es6的新特性"><a href="#es6的新特性" class="headerlink" title="es6的新特性"></a>es6的新特性</h3><p>ES6引入了许多新特性，包括<strong>箭头函数、模板字符串、解构赋值、Promise、let与const声明变量、for…of循环、Classes和模块化</strong>。ES6（ECMAScript 2015）是JavaScript语言的一个重要更新，它为Web开发带来了一系列现代的、强大的特性，极大地提高了编码效率和代码的可维护性。以下是简要介绍：</p>
+<ol>
+<li><strong>箭头函数</strong>：箭头函数提供了一种更简洁的函数语法，它的一个显著特点是不绑定自己的<code>this</code>值，而是继承外层函数的<code>this</code>值。这在处理回调函数时尤其有用，因为它消除了管理<code>this</code>值的需要[^1^][^3^]。</li>
+<li><strong>模板字符串</strong>：模板字符串允许嵌入表达式，并支持多行字符串，使得字符串的处理更加灵活和强大。这对于构建动态字符串非常有用，特别是在需要格式化输出时[^1^][^3^]。</li>
+<li><strong>解构赋值</strong>：解构赋值允许从数组或对象中方便地提取值，并将其分配给新的变量，这大大简化了数据操作和交换过程。这使得代码更加清晰和简洁[^1^][^3^]。</li>
+<li><strong>Promise</strong>：Promise 提供了一种更优雅的方式处理异步操作，通过链式调用和错误处理，替代了传统的回调函数模式。Promise使得异步代码更容易理解和维护[^1^][^3^]。</li>
+<li><strong>let与const声明变量</strong>：引入了新的变量声明方式，<code>let</code>和<code>const</code>。<code>let</code>用于声明块级作用域的变量，而<code>const</code>用于声明常量，其值一旦设置便不可更改。这些新关键字有助于提高代码的清晰性和避免潜在的错误[^1^][^3^]。</li>
+<li><strong>for…of循环</strong>：这是一种新的迭代器，专门用于遍历如数组、Map、Set等可迭代对象的值。这与之前用于遍历对象键的<code>for...in</code>循环形成对比，提供了更直观的迭代方式[^1^][^3^]。</li>
+<li><strong>Classes</strong>：ES6引入了类的概念，尽管它们在底层仍然基于原型继承，但类的语法让JavaScript的对象导向编程更加接近传统OOP语言的风格。类语法促进了代码的组织和复用[^1^][^3^]。</li>
+<li><strong>模块化</strong>：ES6提供了原生的模块系统，通过<code>import</code>和<code>export</code>关键字来导入和导出模块成员。这解决了以往依赖第三方库如RequireJS的问题，使得模块管理更为标准化和简单[^1^][^3^]。</li>
+</ol>
+<p>此外，除了上述特性，还有Symbol类型的引入，它允许创建独一无二的标识符，以及扩展运算符(<code>...</code>)，可用于函数参数展开或数组和对象的合并等多个场景。这些新特性共同提升了JavaScript的表达能力和开发效率[^3^]。</p>
+<p>综上所述，ES6的新特性极大地丰富了JavaScript的表达能力，提高了代码的效率和可维护性。掌握这些新特性对于任何使用JavaScript开发的工程师来说都是必要的，它们不仅可以帮助编写更加清晰和高效的代码，还能确保开发者能够充分利用JavaScript语言的最新进展。</p>
+<h3 id="Promise和async，await的区别"><a href="#Promise和async，await的区别" class="headerlink" title="Promise和async，await的区别"></a>Promise和async，await的区别</h3><p>在JavaScript中处理异步操作的不同方式，Promise、async&#x2F;await各自提供了不同的抽象层次和方法来简化异步代码的编写和管理。以下是具体分析：</p>
+<ol>
+<li><p><strong>基本概念与用法</strong></p>
+<ul>
+<li><strong>Promise</strong>：Promise 是一种编程模型，它代表一个最终可能完成（也可能被拒绝）的操作，提供了一个更合理的异步模式[^1^]。Promise有三种状态：pending（挂起）、fulfilled（已实现）、rejected（已拒绝）。一旦状态改变（从pending变为fulfilled或rejected），则不可再变。Promise通过<code>then</code>方法来处理完成或失败后的逻辑，通过<code>catch</code>方法来捕获错误。</li>
+<li><strong>Async&#x2F;Await</strong>：Async&#x2F;Await构建在Promise之上，是对其的进一步封装和改进。<code>async</code>关键字用于声明一个函数是异步的，而<code>await</code>关键字用于等待一个Promise解析完成，并返回其结果。Async&#x2F;Await使得异步代码可以以同步的方式书写，提高了代码的可读性和可维护性[^2^]。</li>
+</ul>
+</li>
+<li><p><strong>错误处理</strong></p>
+<ul>
+<li><strong>Promise</strong>：在Promise中，错误处理主要通过<code>.then(...).catch(...)</code>链来实现。如果Promise被rejected，可以在<code>.catch</code>方法中捕获并处理错误。若未设置<code>.catch</code>，则错误会向上冒泡[^4^]。</li>
+<li><strong>Async&#x2F;Await</strong>：对于Async&#x2F;Await，任何在<code>async</code>函数内部抛出的错误都可以通过外围的try-catch语句来捕获处理。这使得错误处理更加集中和清晰[^2^]。</li>
+</ul>
+</li>
+<li><p><strong>性能与执行上下文</strong></p>
+<ul>
+<li><strong>Promise</strong>：创建Promise时，其后的代码会继续同步执行。当Promise状态改变时，相应的回调函数会被添加到微任务队列中，等待当前执行栈清空后执行[^2^]。</li>
+<li><strong>Async&#x2F;Await</strong>：在<code>async</code>函数中，<code>await</code>关键字之前的代码仍同步执行。一旦遇到<code>await</code>，JavaScript引擎会暂停该函数的执行，直到Promise解析完毕。这意味着<code>async</code>函数在等待时不会阻塞后续代码的执行，但是函数内部的执行顺序是按书写顺序来的[^2^]。</li>
+</ul>
+</li>
+<li><p><strong>使用场景与适用性</strong></p>
+<ul>
+<li><strong>Promise</strong>：适用于简单的异步流程控制，尤其是在只需要处理成功或失败单次逻辑的场景。</li>
+<li><strong>Async&#x2F;Await</strong>：适合处理更复杂的异步流程，特别是那些涉及多个依赖步骤的情况，能显著提高代码的整洁度和可理解性。</li>
+</ul>
+</li>
+</ol>
+<p>综上所述，虽然Promise和async&#x2F;await都是处理异步操作的工具，但它们在使用上有明显的不同。async&#x2F;await通常被认为是更现代化、更易于理解和编码的方法，特别是在处理复杂或者有多个步骤的异步操作时。然而，理解Promise仍然是基础，因为async&#x2F;await是基于Promise工作的。</p>
+<h3 id="async，await的原理"><a href="#async，await的原理" class="headerlink" title="async，await的原理"></a>async，await的原理</h3><p>async 和 await 是 JavaScript 中用于处理异步操作的关键词，它们是 ES2017（也称为 ES8）标准引入的特性，旨在提供一种更加简洁和直观的方式来编写异步代码，相比于传统的回调函数和 Promise，它们使得代码结构更接近于同步代码的阅读体验。</p>
+<p>async 原理<br>自动返回 Promise: 当一个函数被 async 关键字修饰时，该函数会自动返回一个 Promise 对象。这意味着无论函数内部如何执行，外部调用该函数时都可以通过 .then() 或者 .catch() 处理这个 Promise。<br>内置执行器: async 函数有一个内置的执行器，这意味着你不需要像 Generator 函数那样手动调用一个外部函数（如 co 函数库）来执行它。这使得异步代码的书写和调用变得简单直接。</p>
+<p>await 原理<br>暂停执行: await 关键字只能在 async 函数内部使用。当遇到 await 表达式时，async 函数的执行会被暂停，直到等待的 Promise 解析完成（无论是 resolved 还是 rejected）。<br>处理 Promise: await 后面通常跟着一个 Promise（或者任何可以被转换为 Promise 的表达式）。如果这个 Promise 成功（resolved），那么 await 将返回 Promise 的解析值；如果 Promise 被拒绝（rejected），则 await 会抛出一个错误，这可以在 async 函数中通过 try…catch 语句捕获。<br>非阻塞: 虽然 await 会使 async 函数在该点暂停，但它并不会阻塞其他代码的执行。JavaScript 的单线程特性意味着在 await 暂停期间，其他任务（比如事件处理）仍然可以继续执行。</p>
+<p>实现细节<br>在底层实现上，async 函数通过将函数体转换为一个状态机来工作，这个状态机能够根据 await 表达式的解析结果恢复执行。每次 await 遇到一个待解决的 Promise 时，状态机会挂起当前的执行上下文，并在 Promise 解析时通过微任务（microtask）队列恢复执行，从而实现了非阻塞的异步控制流。</p>
+<p>总之，async&#x2F;await 提供了一种优雅的方式来管理异步操作，让开发者能够以类似同步代码的方式编写异步逻辑，而无需显式地处理回调函数或 Promise 链。</p>
+<h3 id="Promise的原理"><a href="#Promise的原理" class="headerlink" title="Promise的原理"></a>Promise的原理</h3><p>Promise 是 JavaScript 中用于处理异步操作的一种模式，它的设计目标主要是为了解决回调地狱（Callback Hell）问题，让异步代码更加易于理解和维护。Promise 的核心原理可以概括为以下几个方面：</p>
+<p>状态机模型：Promise 是一个具有三个状态的对象，这三个状态分别是：三种状态不可逆</p>
+<p>Pending（等待中）：这是 Promise 的初始状态，表示异步操作正在进行中，既没有成功也没有失败。<br>Fulfilled（已成功）：表示异步操作已经成功完成，此时 Promise 的结果值可用。<br>Rejected（已失败）：表示异步操作失败，此时 Promise 会携带一个错误原因。<br>不可变性：一旦 Promise 的状态从 Pending 变为 Fulfilled 或 Rejected，这个状态就会固定下来，不会再改变。这意味着你不能从 Fulfilled 状态回到 Pending 或 Rejected，也不能从 Rejected 变回 Pending 或 Fulfilled。</p>
+<p>链式调用：Promise 提供了 then、catch 和 finally 方法，允许以链式的方式处理异步操作的成功或失败结果。then 方法用于注册在 Promise 成功时的回调函数，catch 用于处理错误，finally 则不管 Promise 是成功还是失败都会执行的代码。</p>
+<p>解决回调地狱：通过将回调函数注册到 Promise 上，而非直接嵌套，Promise 可以帮助开发者避免复杂的回调函数嵌套，使异步代码更加扁平和易于阅读。</p>
+<p>Promise 规范：Promise 的行为遵循 Promise&#x2F;A+ 规范，这是一个社区广泛接受的标准，确保了不同实现之间的兼容性。规范中定义了如如何传递结果、错误处理、Promise 的决议过程等细节。</p>
+<p>内部实现：Promise 的内部通常包含一个状态机来管理状态变化，以及一个回调函数队列来存放待处理的 onFulfilled 和 onRejected 函数。当调用 resolve 或 reject 方法时，状态会改变，并且根据状态触发相应的回调函数执行。</p>
+<p>宏任务与微任务：Promise 的解决（resolve&#x2F;reject）操作通常会安排在当前执行栈结束后的一个微任务（microtask）队列中执行，这意味着 Promise 的回调函数会在当前同步代码执行完毕后立即执行，但不会阻塞其他宏任务（如事件循环中的其他任务）。</p>
+<p>综上所述，Promise 的原理围绕着状态管理、链式调用和异步控制流优化，提供了一种更加优雅的异步编程模型。</p>
 
                 
             </div>
@@ -662,7 +718,7 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">2k</span>
+                        class="white-color">5k</span>
             
             
             
