@@ -252,21 +252,21 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-06-05
+                    2024-10-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    13 分
                 </div>
                 
 
@@ -350,7 +350,25 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
 <p>内部实现：Promise 的内部通常包含一个状态机来管理状态变化，以及一个回调函数队列来存放待处理的 onFulfilled 和 onRejected 函数。当调用 resolve 或 reject 方法时，状态会改变，并且根据状态触发相应的回调函数执行。</p>
 <p>宏任务与微任务：Promise 的解决（resolve&#x2F;reject）操作通常会安排在当前执行栈结束后的一个微任务（microtask）队列中执行，这意味着 Promise 的回调函数会在当前同步代码执行完毕后立即执行，但不会阻塞其他宏任务（如事件循环中的其他任务）。</p>
 <p>综上所述，Promise 的原理围绕着状态管理、链式调用和异步控制流优化，提供了一种更加优雅的异步编程模型。</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包是一个在外部调用函数内部变量的一种方式</p>
+<pre class="line-numbers language-none"><code class="language-none">function makeFunc() &#123;
+    var name &#x3D; &quot;Mozilla&quot;;
+    function displayName() &#123;
+        alert(name);
+    &#125;
+    return displayName;
+&#125;
 
+var myFunc &#x3D; makeFunc();
+myFunc();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>使用var来声明，只提升声明，不赋值</p>
+<h3 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h3><p>1.只提升函数声明(提升到最前面)，不提升函数调用，<br>2.函数表达式不存在提升现象</p>
+<h3 id="数组结构"><a href="#数组结构" class="headerlink" title="数组结构"></a>数组结构</h3><p>是将数组的单元值快速批量赋值给一系列变量的简介语法</p>
+<h3 id="js中加分号"><a href="#js中加分号" class="headerlink" title="js中加分号"></a>js中加分号</h3><p>1.立即执行函数<br>2.数组结构</p>
+<h3 id="new-实例化执行过程"><a href="#new-实例化执行过程" class="headerlink" title="new 实例化执行过程"></a>new 实例化执行过程</h3><p>1.创建空对象<br>2.构造函数this指向新对象<br>3.执行构造函数代码，修改this，添加新属性<br>4.返回新对象</p>
+<p>构造函数和原型对象的this指向实例对象</p>
+<h3 id><a href="#" class="headerlink" title></a></h3>
                 
             </div>
             <hr/>
@@ -718,7 +736,7 @@ rem和em的区别你知道么？rem：rem是相对于根元素（即html元素�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5k</span>
+                        class="white-color">5.2k</span>
             
             
             
